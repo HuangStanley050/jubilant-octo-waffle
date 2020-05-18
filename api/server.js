@@ -46,7 +46,7 @@ app.get("/api/token/ping", checkAuth, (req, res) => {
   return res.json({ msg: "all good mate" });
 });
 app.get("/api/ping", checkAuth, (req, res) => {
-  return res.send("Hello ping");
+  return res.json({ msg: "Hello ping" });
 });
 
 // start the Express server

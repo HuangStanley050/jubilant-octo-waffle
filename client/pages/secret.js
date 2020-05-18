@@ -16,7 +16,7 @@ const Secret = () => {
       const res = await axios.get(serverUrl + "/api/ping", {
         headers: { Authorization: token },
       });
-      console.log(res.data.msg);
+      console.log(res.data);
     } catch (err) {
       console.log(err.response.data.msg);
     }
@@ -26,8 +26,21 @@ const Secret = () => {
       <h2>Secret page</h2>
       <p>Only accessible via a valid JWT</p>
       <br></br>
-      <button onClick={(e) => this.onPingCall(e)}>Ping Call</button>
+      <button onClick={onPingCall}>Ping Call</button>
       <p>Check console for response</p>
     </div>
   );
 };
+
+Secret.getInitialProps = async (ctx) => {
+  // Must validate JWT
+  // If the JWT is invalid it must redirect
+  // back to the main page. You can do that
+  // with Router from 'next/router
+  await handleAuthSSR(ctx);
+
+  // Must return an object
+  return {};
+};
+
+export default Secret;

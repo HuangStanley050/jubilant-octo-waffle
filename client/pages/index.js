@@ -17,9 +17,7 @@ const Index = () => {
     const response = await axios.get(serverUrl + "/api/login");
     const token = response.data.token;
     cookies.set("token", token);
-    setToken({
-      tokentoken,
-    });
+    setToken(token);
   };
   return (
     <div>

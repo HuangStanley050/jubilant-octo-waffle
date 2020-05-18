@@ -45,7 +45,7 @@ app.get("/api/token/ping", checkAuth, (req, res) => {
   // so if he can get this far, that means token is valid
   return res.json({ msg: "all good mate" });
 });
-app.get("/api/ping", (req, res) => {
+app.get("/api/ping", checkAuth, (req, res) => {
   return res.send("Hello ping");
 });
 
